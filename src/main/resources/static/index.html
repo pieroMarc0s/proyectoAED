@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi aplicación</title>
+</head>
+<body>
+<h1>Mi aplicación</h1>
+<ul id="product-list"></ul>
+
+<script>
+    fetch('/api/products') // Enviar solicitud HTTP al controlador
+        .then(response => response.json())
+        .then(data => {
+            const productList = document.getElementById('product-list');
+            data.forEach(product => {
+                const listItem = document.createElement('li');
+                listItem.textContent = product.name;
+                productList.appendChild(listItem);
+            });
+        });
+</script>
+</body>
+</html>
